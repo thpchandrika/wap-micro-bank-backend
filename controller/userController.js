@@ -6,7 +6,7 @@ let controller = {
         let user = User.findUser(username, password);
         if (user) {
             const authToken = `${new Date().toJSON() + username}`;
-            res.json({ token: authToken });
+            res.json({ token: authToken, username: username });
         } else {
             res.status(401).json({ error: 'Invalid credentials' });
         }

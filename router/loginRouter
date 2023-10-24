@@ -3,11 +3,6 @@ const userController = require("../controller/userController")
 
 const router = express.Router();
 
-const users = [
-    { username: 'user1', password: 'user1@123' },
-    { username: 'user2', password: 'user2@123' },
-];
-
 router.post("/login", userController.findUser)
 
 module.exports = router;
