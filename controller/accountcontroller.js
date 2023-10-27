@@ -18,7 +18,7 @@ let accountController = {
                 phoneNumber, ssn, state, city, zip, username);
             const account = newAccount.createAccount();
             if (account) {
-                res.status(201).json({ message: newAccount })
+                res.status(201).json(newAccount);
             }
         } else {
             res.status(400).json({ message: "provide all data." })
