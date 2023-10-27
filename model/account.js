@@ -86,6 +86,29 @@ class Account {
     static getAll() {
         return bankAccounts;
     }
+
+    static getAccountsByUsername(username) {
+        return bankAccounts.filter(a => a.username === username);
+    }
+
+    static validateAccount(accountNumber) {
+        const isValidAccount = bankAccounts.some(a => a.accountNumber === accountNumber);
+        return isValidAccount;
+    }
+
+    static transferFund(fromAccount, toAccount, amount) {
+        const fromAccountDetails = bankAccounts.find(a => a.accountNumber === fromAccount);
+        const toAccountDetails = bankAccounts.find(a => a.accountNumber === toAccount);
+        if (fromAccountDetails && toAccountDetails) {
+            if (amount <= fromAccountDetails.balance) {
+                fromAccountDetails.balance -= amount;
+                toAccountDetails.balance += amount;
+                console.log(fromAccountDetails.balance);
+                console.log(toAccountDetails.balance);
+                return true;
+            }
+        }
+    }
 }
 
 module.exports = Account;
