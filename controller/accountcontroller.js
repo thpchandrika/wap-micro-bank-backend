@@ -15,6 +15,10 @@ let accountController = {
 
         console.log(initialDeposit);
 
+        if (initialDeposit < 10) {
+            res.status(400).json({ message: "initial deposit must be at least $10." })
+        }
+
         if (accountHolderName && accountType && initialDeposit && dob && emailAddress
             && phoneNumber && ssn && state && city && zip && username) {
             const newAccount = new Account(username, accountHolderName, accountType, initialDeposit, dob, emailAddress,
@@ -48,6 +52,9 @@ let accountController = {
 
         if (!fromAccount || !toAccount || !amount) {
             res.status(400).json({ message: "provide all data." })
+        }
+        if (parseFloat(amount) < 5) {
+            res.status(400).json({ message: "amount must be at least $5." })
         }
         const isValidSender = Account.validateAccount(fromAccount);
         if (!isValidSender) {
@@ -85,6 +92,10 @@ let accountController = {
 
         if (!utilityCompany || !fromAccountUtility || !amountUtility || !utilityUserId) {
             res.status(400).json({ message: "provide all data." })
+        }
+
+        if (parseFloat(amountUtility) < 5) {
+            res.status(400).json({ message: "amount must be at least $5." })
         }
 
         //validate user

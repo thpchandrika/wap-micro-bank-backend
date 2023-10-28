@@ -39,7 +39,7 @@ const transactions = [
         description: 'Grocery Shopping',
         note: 'Purchased colgate',
         amount: -90.00,
-        transactionAccount: '1234567890',
+        transactionAccount: '4321098765',
         balance: 45,
         transactionType: "WITHDRAWAL"
     },
@@ -50,7 +50,7 @@ const transactions = [
         description: 'Interest Payment',
         note: 'Paid for interest',
         amount: 25.00,
-        transactionAccount: '1234567890',
+        transactionAccount: '5678901234',
         balance: 45,
         transactionType: "DEPOSIT"
     },
@@ -61,7 +61,7 @@ const transactions = [
         description: 'Online Subscription Renewal',
         note: 'AWS certification',
         amount: -9.99,
-        transactionAccount: '1234567890',
+        transactionAccount: '9876543210',
         balance: 45,
         transactionType: "WITHDRAWAL"
     },
