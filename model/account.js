@@ -26,7 +26,6 @@ class Account {
     }
 
     static getAccountsByUsername(username) {
-        console.log(data.bankAccounts.filter(a => a.username === username));
         return data.bankAccounts.filter(a => a.username === username);
     }
 
@@ -64,7 +63,6 @@ class Account {
             if (amount <= fromAccountDetails.balance) {
                 fromAccountDetails.balance -= amount;
                 data.utilityCompanies[companyindex].balance += amount;
-                console.log(data.utilityCompanies[companyindex].balance);
                 return fromAccountDetails.balance;
             }
         }

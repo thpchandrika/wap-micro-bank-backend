@@ -1,7 +1,4 @@
-const users = [
-    { username: 'user1', password: 'user1@123' },
-    { username: 'user2', password: 'user2@123' },
-];
+const data = require("../data/data")
 
 class User {
     constructor(username, password) {
@@ -10,9 +7,8 @@ class User {
     }
 
     static findUser(username, password) {
-        return users.find(u => u.username === username);
+        return data.users.find(u => u.username === username);
     }
-
 }
 
 module.exports = User;

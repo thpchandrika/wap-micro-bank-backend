@@ -13,8 +13,6 @@ let accountController = {
         const { accountHolderName, dob, emailAddress, phoneNumber, state,
             city, zip, ssn, initialDeposit, accountType, username } = req.body;
 
-        console.log(initialDeposit);
-
         if (initialDeposit < 10) {
             res.status(400).json({ message: "initial deposit must be at least $10." })
         }
@@ -72,7 +70,6 @@ let accountController = {
             const month = String(now.getMonth() + 1).padStart(2, '0'); // Adding 1 to the month because months are zero-indexed
             const day = String(now.getDate()).padStart(2, '0');
             const currentDate = `${year}-${month}-${day}`;
-            console.log(currentDate);
             let currentCount = Transaction.getCount();
             let newTransaction = new Transaction(++currentCount, username, currentDate,
                 `Fund $${parseFloat(amount)} transferred to ${toAccount}`, note, -amount, fromAccount, newBalance, "WITHDRAWAL");
@@ -106,8 +103,6 @@ let accountController = {
         }
 
         const newBalance = Account.utilityPayment(index, fromAccountUtility, parseFloat(amountUtility));
-        console.log("balance: " + newBalance);
-        console.log(data.utilityCompanies);
         if (newBalance) {
             const now = new Date();
             const year = now.getFullYear();

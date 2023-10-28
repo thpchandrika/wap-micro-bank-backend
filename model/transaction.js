@@ -2,7 +2,6 @@ const data = require("../data/data");
 
 class Transaction {
     constructor(id, username, date, description, note, amount, transactionAccount, newbalance, transactionType) {
-        console.log(id);
         this.id = id;
         this.username = username;
         this.date = date;

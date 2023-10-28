@@ -1,3 +1,8 @@
+const users = [
+    { username: 'user1', password: 'user1@123' },
+    { username: 'user2', password: 'user2@123' },
+];
+
 const transactions = [
     {
         id: 1,
@@ -203,3 +208,4 @@ exports.utilityCompanies = utilityCompanies;
 exports.transactions = transactions;
 exports.bankAccounts = bankAccounts;
 exports.creditCards = creditCards;
+exports.users = users;
