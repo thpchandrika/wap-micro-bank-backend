@@ -16,7 +16,8 @@ class Account {
     }
 
     createAccount() {
-        this.accountNumber = Math.floor(Math.random() * 9000000000) + 1000000000;
+        const accNo = Math.floor(Math.random() * 9000000000) + 1000000000;
+        this.accountNumber = accNo.toString();
         data.bankAccounts.push(this);
         return this;
     }
