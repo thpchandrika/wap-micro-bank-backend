@@ -1,10 +1,9 @@
 let data = require("../data/data");
 
 class Account {
-    constructor(username, accountHolder, accountType, balance, dob, emailAddress, phoneNumber, ssn, state, city, zip, initialDeposit) {
+    constructor(username, accountHolder, accountType, initialDeposit, dob, emailAddress, phoneNumber, ssn, state, city, zip) {
         this.accountHolder = accountHolder;
         this.accountType = accountType;
-        this.balance = balance;
         this.dob = dob;
         this.emailAddress = emailAddress;
         this.phoneNumber = phoneNumber;
@@ -23,11 +22,11 @@ class Account {
     }
 
     static getAll() {
-        console.log("data" + data.bankAccounts);
         return data.bankAccounts;
     }
 
     static getAccountsByUsername(username) {
+        console.log(data.bankAccounts.filter(a => a.username === username));
         return data.bankAccounts.filter(a => a.username === username);
     }
 
@@ -43,9 +42,30 @@ class Account {
             if (amount <= fromAccountDetails.balance) {
                 fromAccountDetails.balance -= amount;
                 toAccountDetails.balance += amount;
-                console.log(fromAccountDetails.balance);
-                console.log(toAccountDetails.balance);
-                return true;
+                return fromAccountDetails.balance;
+            }
+        }
+    }
+
+    static creditPayment(fromAccount, amount) {
+        const fromAccountDetails = data.bankAccounts.find(a => a.accountNumber === fromAccount);
+        if (fromAccountDetails) {
+            if (amount <= fromAccountDetails.balance) {
+                fromAccountDetails.balance -= amount;
+                data.creditCards.balance += amount;
+                return fromAccountDetails.balance;
+            }
+        }
+    }
+
+    static utilityPayment(companyindex, fromAccount, amount) {
+        const fromAccountDetails = data.bankAccounts.find(a => a.accountNumber === fromAccount);
+        if (fromAccountDetails) {
+            if (amount <= fromAccountDetails.balance) {
+                fromAccountDetails.balance -= amount;
+                data.utilityCompanies[companyindex].balance += amount;
+                console.log(data.utilityCompanies[companyindex].balance);
+                return fromAccountDetails.balance;
             }
         }
     }

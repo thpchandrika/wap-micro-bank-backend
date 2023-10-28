@@ -1,7 +1,7 @@
 const User = require("../model/user");
 
 let controller = {
-    findUser: function (req, res, next) {
+    findUser: (req, res, next) => {
         let { username, password } = req.body;
         let user = User.findUser(username, password);
         if (user) {
